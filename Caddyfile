@@ -1,0 +1,20 @@
+:8080 {
+    encode gzip
+
+
+    # Route /gpt/* to gpt-load
+    handle_path /gpt/* {
+       # rewrite * /{http.matchers.path.relative}  # strip /gpt prefix
+        reverse_proxy localhost:3011
+    }
+
+    # Route /lobe/* to LobeChat
+    handle /* {
+        # rewrite * /{http.matchers.path.relative}  # strip /lobe prefix
+        reverse_proxy localhost:3210
+    }
+
+
+    # Default: 404
+    respond "Not Found" 404
+}
