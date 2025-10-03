@@ -34,22 +34,27 @@ services:
       DATABASE_DSN : "${DATABASE_DSN}"
 
   git-server:
-    image: codeberg.org/forgejo/forgejo:12
-    container_name: forgejo
+    # image: codeberg.org/forgejo/forgejo:12
+    # container_name: forgejo
+    image: docker.gitea.com/gitea:nightly
+    container_name: gitea
+
     # network_mode : host
     environment:
       USER_UID : "${USER_UID}" 
       USER_GID : "${USER_GID}"
-      FORGEJO__database__DB_TYPE : "${FORGEJO__database__DB_TYPE}"
-      FORGEJO__database__HOST : "${FORGEJO__database__HOST}"
-      FORGEJO__database__NAME : "${FORGEJO__database__NAME}"
-      FORGEJO__database__USER : "${FORGEJO__database__USER}"
-      FORGEJO__database__PASSWD : "${FORGEJO__database__PASSWD}"
+      GITEA__database__DB_TYPE : "${GITEA__database__DB_TYPE}"
+      GITEA__database__HOST : "${GITEA__database__HOST}"
+      GITEA__database__NAME : "${GITEA__database__NAME}"
+      GITEA__database__USER : "${GITEA__database__USER}"
+      GITEA__database__PASSWD : "${GITEA__database__PASSWD}"
     restart: always
+    # env_file:
+      # - .env
     # networks:
       # - forgejo
     volumes:
-      - ./forgejo:/data
+      - ./data:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
