@@ -8,10 +8,10 @@
         reverse_proxy localhost:3011
     }
 
-    # Route /lobe/* to LobeChat
-    handle /* {
+    
+    handle_path /* {
         # rewrite * /{http.matchers.path.relative}  # strip /lobe prefix
-        reverse_proxy localhost:3210
+        reverse_proxy localhost:3000
     }
 
 
