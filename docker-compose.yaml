@@ -38,16 +38,16 @@ services:
     container_name: forgejo
     # network_mode : host
     environment:
-      USER_UID : 1000
-      USER_GID : 1000
+      USER_UID : "${USER_UID}" 
+      USER_GID : "${USER_GID}"
       FORGEJO__database__DB_TYPE : "${FORGEJO__database__DB_TYPE}"
       FORGEJO__database__HOST : "${FORGEJO__database__HOST}"
       FORGEJO__database__NAME : "${FORGEJO__database__NAME}"
       FORGEJO__database__USER : "${FORGEJO__database__USER}"
       FORGEJO__database__PASSWD : "${FORGEJO__database__PASSWD}"
     restart: always
-    networks:
-      - forgejo
+    # networks:
+      # - forgejo
     volumes:
       - ./forgejo:/data
       - /etc/timezone:/etc/timezone:ro
