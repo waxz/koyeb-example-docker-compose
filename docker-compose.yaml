@@ -3,8 +3,8 @@ services:
     build: ./openlist
     ports:
       - "5244:5244"
-    # volumes:
-    #   - /tmp/.vars:/opt/.vars
+    volumes:
+      - /opt/.vars:/opt/.vars
   # gpt-load:
   #   image: ghcr.io/tbphp/gpt-load:latest
   #   # build:
