@@ -4,7 +4,7 @@ services:
     ports:
       - "5244:5244"
     volumes:
-      - /opt/.vars:/opt/.vars
+      - /opt/config/.vars:/opt/config/.vars
   # gpt-load:
   #   image: ghcr.io/tbphp/gpt-load:latest
   #   # build:
